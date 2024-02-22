@@ -15,30 +15,46 @@ const massEl = document.getElementById("mass")
 
 
 convertBtnEl.addEventListener("click", function() {
-    length(inputEl.value)
-    volume(inputEl.value)
-    mass(inputEl.value)
+    calculateLength(inputEl.value)
+    calculateVolume(inputEl.value)
+    calculateMass(inputEl.value)
+    inputEl.value = ""
 })
 
-function length(amount) {
-    let feetFromMeters = (amount * 3.281).toFixed(3)
-    let metersFromFeet = (amount * 0.305).toFixed(3)
-    let lengthResult = `${amount} meters = ${feetFromMeters} feet | ${amount} feet = ${metersFromFeet} meters`
+function calculateLength(amount) {
+    if (amount) {
+        let feetFromMeters = (amount * 3.281).toFixed(3)
+        let metersFromFeet = (amount * 0.305).toFixed(3)
+        let lengthResult = `${amount} meters = ${feetFromMeters} feet | ${amount} feet = ${metersFromFeet} meters`
+        lengthEl.innerHTML = lengthResult
+    } else {
+        lengthEl.innerHTML = ""
+    }
 
-    lengthEl.innerHTML = lengthResult
 } 
 
-function volume(amount) {
-    let gallonsFromLiters = (amount * 0.264).toFixed(3)
-    let litersFromGallons = (amount * 3.785).toFixed(3)
-    let volumeResult = `${amount} liters = ${gallonsFromLiters} gallons | ${amount} gallons = ${litersFromGallons} liters`
-    volumeEL.innerHTML = volumeResult
+function calculateVolume(amount) {
+    if (amount) {
+        let gallonsFromLiters = (amount * 0.264).toFixed(3)
+        let litersFromGallons = (amount * 3.785).toFixed(3)
+        let volumeResult = `${amount} liters = ${gallonsFromLiters} gallons | ${amount} gallons = ${litersFromGallons} liters`
+
+        volumeEL.innerHTML = volumeResult
+    } else {
+        volumeEL.innerHTML = ""
+    }
 }
 
-function mass(amount) {
-    let poundsFromKgs = (amount * 2.204).toFixed(3)
-    let kgsFromPounds = (amount * 0.454).toFixed(3)
-    let massResult = `${amount} kilograms = ${poundsFromKgs} pounds | ${amount} pounds = ${kgsFromPounds} kilograms`
-    massEl.innerHTML = massResult
+function calculateMass(amount) {
+    if (amount) {
+        let poundsFromKgs = (amount * 2.204).toFixed(3)
+        let kgsFromPounds = (amount * 0.454).toFixed(3)
+        let massResult = `${amount} kilograms = ${poundsFromKgs} pounds | ${amount} pounds = ${kgsFromPounds} kilograms`
+
+        massEl.innerHTML = massResult
+    } else {
+        massEl.innerHTML = ""
+    }
+    
 }
 
